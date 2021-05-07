@@ -1,4 +1,4 @@
-let accessToken = null;
+let accessToken = '';
 
 const Spotify = {
     getAccessToken() {
@@ -9,7 +9,7 @@ const Spotify = {
             accessToken = this.searchUrl(this.regex[0][1]);
             const expiresIn = this.searchUrl(this.regex[1][1]);
 
-            window.setTimeout(() => accessToken = null, expiresIn * 1000);
+            window.setTimeout(() => accessToken = '', expiresIn * 1000);
             window.history.pushState('Access Token', null, '/');
         }
     },
