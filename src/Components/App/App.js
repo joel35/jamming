@@ -4,6 +4,7 @@ import './App.css';
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import PlayList from "../PlayList/PlayList";
+import Spotify from "../../util/Spotify";
 
 function App() {
     const [searchResults, setSearchResults] = useState(
@@ -42,10 +43,15 @@ function App() {
 
     const savePlaylist = () => {
         const trackURIs = playlistTracks.map((track) => track.id);
+        Spotify.savePlaylist(playlistName, trackURIs);
+        setPlaylistName('');
+        setPlaylistTracks([]);
     }
 
     const search = (searchTerm) => {
-        console.log(searchTerm);
+        let spotifySearch = Spotify.search(searchTerm)
+        console.log(spotifySearch)
+        setSearchResults(spotifySearch);
     }
 
     return (
