@@ -4,7 +4,8 @@ const Spotify = {
     getAccessToken() {
         if (accessToken) {
             return accessToken
-        } else if (this.regex.every(re => this.searchUrl(re))) {
+        }
+        if (this.regex.every(re => this.searchUrl(re))) {
             accessToken = this.searchUrl(this.regex[0][1]);
             const expiresIn = this.searchUrl(this.regex[1][1]);
 
